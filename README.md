@@ -1,96 +1,93 @@
 # Diploma_Kinopoisk
+
 Автоматизация UI и API тестирования сайта Кинопоиск.
 
 ## Технологии
 
-- Python
+- Python 3.14
 - Pytest
 - Selenium WebDriver
 - Requests
 - Allure
 - Page Object Model
+- python-dotenv
+- webdriver-manager
 
 ## Структура проекта
-api/
-movie_api.py
 
-pages/
-main_page.py
+```
+Diploma_Kinopoisk
+│
+├── api
+│   └── movie_api.py
+│
+├── pages
+│   └── main_page.py
+│
+├── tests
+│   ├── test_api.py
+│   ├── test_ui.py
+│   └── test_smoke.py
+│
+├── config
+│   └── config.py
+│
+├── conftest.py
+├── pytest.ini
+└── requirements.txt
+```
 
-tests/
-test_api.py
-test_ui.py
-test_smoke.py
-
-config/
-config.py
 ## Запуск тестов
 
-Установить зависимости:
+Установка зависимостей:
 
 ```bash
 pip install -r requirements.txt
+```
 
 Запуск всех тестов:
 
+```bash
 pytest -v
+```
 
-Запуск API:
+Запуск API тестов:
 
+```bash
 pytest -m api
+```
 
-Запуск UI:
+Запуск UI тестов:
 
+```bash
 pytest -m ui
+```
 
 Создание Allure отчёта:
 
+```bash
 pytest --alluredir=allure-results
+```
 
-Просмотр:
+Просмотр отчёта:
 
+```bash
 allure serve allure-results
+```
 
-Для собеседования это будет выглядеть гораздо лучше.
+## Покрытие тестами
 
----
+### API
 
-# 8. Сейчас порядок действий
+- Получение фильма по ID
+- Поиск фильма по названию
+- Проверка несуществующего фильма
+- Проверка некорректных параметров
 
-Делаем так:
+### UI
 
-### Шаг 1
-
-Открываем `.gitignore`.
-
-Добавляем в конец:
-
-```gitignore
-.idea/
-allure-results/
-allure-report/
-Шаг 2
-
-Проверяем:
-
-git status
-Шаг 3
-
-Добавляем:
-
-git add .
-Шаг 4
-
-Проверяем:
-
-git status
-Шаг 5
-
-Коммит:
-
-git commit -m "Add API and UI autotests for Kinopoisk"
-Шаг 6
-
-Отправляем:
-
-git push origin main
+- Поиск фильма
+- Открытие страницы фильма
+- Переход по логотипу
+- Открытие категории фильмов
+- Открытие списка ТОП-250
