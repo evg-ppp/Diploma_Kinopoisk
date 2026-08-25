@@ -108,5 +108,3 @@ class MainPage:
                 "/lists/movies/top250/"
             )
         )
-
-
