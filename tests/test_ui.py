@@ -74,4 +74,3 @@ def test_open_top_250(driver):
     page.open_top_250()
 
     assert "/lists/movies/top250/" in driver.current_url
-

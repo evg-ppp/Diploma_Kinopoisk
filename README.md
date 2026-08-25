@@ -75,6 +75,14 @@ pytest --alluredir=allure-results
 allure serve allure-results
 ```
 
+## Проверка качества кода
+
+Проверка PEP8 с помощью flake8:
+
+```bash
+flake8 api pages tests config conftest.py
+```
+
 ## Покрытие тестами
 
 ### API
