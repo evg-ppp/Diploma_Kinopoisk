@@ -2,48 +2,102 @@
 
 Автоматизация UI и API тестирования сайта Кинопоиск.
 
+Проект создан в рамках дипломной работы по автоматизации тестирования.  
+Реализованы UI-тесты с использованием Selenium WebDriver и API-тесты с использованием Requests.
+
+---
+
 ## Технологии
 
 - Python 3.14
 - Pytest
 - Selenium WebDriver
 - Requests
-- Allure
+- Allure Report
 - Page Object Model
+- pytest markers
 - python-dotenv
 - webdriver-manager
+- flake8
+
+---
 
 ## Структура проекта
 
-```
+```text
 Diploma_Kinopoisk
 │
 ├── api
-│   └── movie_api.py
+│   └── movie_api.py          # API методы работы с фильмами
 │
 ├── pages
-│   └── main_page.py
+│   └── main_page.py          # Page Object для UI тестов
 │
 ├── tests
-│   ├── test_api.py
-│   ├── test_ui.py
-│   └── test_smoke.py
+│   ├── test_api.py           # API тесты
+│   ├── test_ui.py            # UI тесты
+│   └── test_smoke.py         # Smoke тесты
 │
 ├── config
-│   └── config.py
+│   └── config.py             # Настройки проекта
 │
-├── conftest.py
-├── pytest.ini
-└── requirements.txt
+├── conftest.py               # Pytest фикстуры
+├── pytest.ini                # Настройки pytest
+├── requirements.txt          # Зависимости проекта
+└── README.md
 ```
 
-## Запуск тестов
+---
 
-Установка зависимостей:
+## Установка проекта
+
+Клонировать репозиторий:
+
+```bash
+git clone https://github.com/evg-ppp/Diploma_Kinopoisk.git
+```
+
+Перейти в папку проекта:
+
+```bash
+cd Diploma_Kinopoisk
+```
+
+Создать виртуальное окружение:
+
+```bash
+python -m venv venv
+```
+
+Активировать виртуальное окружение:
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Установить зависимости:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+---
+
+## Настройка окружения
+
+Создать файл `.env` в корне проекта:
+
+```env
+API_KEY=your_api_key
+```
+
+API ключ используется для работы с Kinopoisk API.
+
+---
+
+## Запуск тестов
 
 Запуск всех тестов:
 
@@ -63,6 +117,16 @@ pytest -m api
 pytest -m ui
 ```
 
+Запуск Smoke тестов:
+
+```bash
+pytest -m smoke
+```
+
+---
+
+## Allure Report
+
 Создание Allure отчёта:
 
 ```bash
@@ -75,6 +139,15 @@ pytest --alluredir=allure-results
 allure serve allure-results
 ```
 
+В отчёте отображаются:
+
+- результаты выполнения тестов;
+- группы API/UI/Smoke тестов;
+- время выполнения;
+- окружение запуска.
+
+---
+
 ## Проверка качества кода
 
 Проверка PEP8 с помощью flake8:
@@ -83,19 +156,43 @@ allure serve allure-results
 flake8 api pages tests config conftest.py
 ```
 
+---
+
 ## Покрытие тестами
 
 ### API
 
-- Получение фильма по ID
-- Поиск фильма по названию
-- Проверка несуществующего фильма
-- Проверка некорректных параметров
+Проверяется:
+
+- получение фильма по ID;
+- поиск фильма по названию;
+- проверка несуществующего фильма;
+- проверка некорректных параметров запроса.
 
 ### UI
 
-- Поиск фильма
-- Открытие страницы фильма
-- Переход по логотипу
-- Открытие категории фильмов
-- Открытие списка ТОП-250
+Проверяется:
+
+- поиск фильма;
+- открытие страницы фильма;
+- переход на главную страницу по логотипу;
+- открытие категории фильмов;
+- открытие списка ТОП-250.
+
+### Smoke
+
+Проверяется:
+
+- доступность API.
+
+---
+
+## Результат выполнения
+
+Текущий результат:
+
+```
+11 passed
+```
+
+Все UI и API тесты проходят успешно.
